@@ -8,6 +8,8 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.Components;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import io.swagger.v3.oas.models.servers.Server;
+import java.util.List;
 
 @Configuration
 public class SwaggerConfig {
@@ -15,6 +17,11 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI bankingApiInfo(){
         return new OpenAPI()
+                .servers(List.of(
+                        new Server()
+                                .url("https://smart-banking-system-production.up.railway.app")
+                                .description("Production server")))
+
                 .info(new Info()
                         .title("Smart Banking System API")
                         .version("1.0")
